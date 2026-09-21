@@ -53,6 +53,6 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = (forwardMovement + rightMovement).normalized;
 
         // Apply movement force
-        rb.velocity = (direction * speedValue);
+        rb.linearVelocity = (direction * speedValue);
     }
 }
