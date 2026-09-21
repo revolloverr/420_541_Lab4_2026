@@ -12,9 +12,19 @@ public class GunComponent : MonoBehaviour
     void Update()
     {
         // TODO add the logic to track player keeping the input down.
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
+            //start charging
+            chargeTime = 0.0f;
+            isCharging = true;
+        } if(Input.GetButton("Fire1")){
+            //increase charge time while button is pressed
+            chargeTime += Time.deltaTime;
+            chargeTime = Mathf.Clamp(chargeTime, 0, maxChargeTime);
+        } if(Input.GetButtonUp("Fire1")){
+            //spawn bullet when fire is released
             ShootBullet();
+            isCharging = false;
         }
     }
 
